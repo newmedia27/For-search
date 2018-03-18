@@ -55,9 +55,12 @@ index idx_shop_products_content
 {
   source            = shop_products_content
   path              = /var/lib/sphinxsearch/data/test1
+  enable_star	= 1
+  expand_keywords = 1
+  min_infix_len = 3
   morphology = stem_enru
   docinfo           = extern
-  charset_type      = sbcs
+  charset_type      = utf-8
 }
 searchd
 {

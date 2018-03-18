@@ -15,7 +15,16 @@ class ShopProductsSearch
 {
     public function fullTextSearch($keyword)
     {
-        $sql = "SELECT * FROM idx_shop_products_content WHERE MATCH ('$keyword') OPTION ranker = WORDCOUNT";
+        $keyword = $keyword;
+if (preg_match("~/~", $keyword)){
+
+    $arr = explode('/',$keyword);
+    $keyword = implode('\\\/', $arr);
+
+
+}
+
+        $sql = "SELECT * FROM idx_shop_products_content WHERE MATCH ('$keyword')OPTION ranker = WORDCOUNT";
         $data = Yii::$app->sphinx->createCommand($sql)->queryAll();
 
 
